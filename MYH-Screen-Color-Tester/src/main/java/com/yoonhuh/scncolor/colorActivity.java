@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
-/**
- * Created by Michael Yoon Huh on 8/25/13.
+/* yH-Screen-Color-Tester
+ * PROGRAMMER: Michael Yoon Huh (huhx0015)
+ * LAST UPDATED: 9/7/2013
  */
+
 public class colorActivity extends Activity {
 
     @Override

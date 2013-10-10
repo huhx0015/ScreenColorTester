@@ -12,6 +12,11 @@ import android.widget.RelativeLayout;
 
 import java.util.Random;
 
+/* yH-Screen-Color-Tester
+ * PROGRAMMER: Michael Yoon Huh (huhx0015)
+ * LAST UPDATED: 9/7/2013
+ */
+
 public class MainActivity extends Activity {
 
     // Button variables.
