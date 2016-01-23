@@ -25,11 +25,15 @@
             android:padding="20dp"
             android:background="@drawable/sct_button_black_background">
 
-            <ImageView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/sct_logo"
-                android:src="@drawable/sct_logo" />
+                android:text="SCREEN COLOR TESTER"
+                android:typeface="monospace"
+                android:textStyle="bold"
+                android:id="@+id/sct_"
+                android:textColor="@android:color/white" />
+
         </LinearLayout>
     </LinearLayout>
 
