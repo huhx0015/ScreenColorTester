@@ -1,7 +1,7 @@
 Screen Color Tester
 =============================
 
-DEVELOPER: huhx0015
+DEVELOPER: Michael Yoon Huh
 
 ![screencolortester_preview](https://cloud.githubusercontent.com/assets/1645482/12527404/08539334-c12f-11e5-966b-9a8cbb69dfda.gif)
 
