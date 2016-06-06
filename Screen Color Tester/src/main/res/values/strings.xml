@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screen Color Tester [HUHX0015]</string>
-    <string name="version">1.01</string>
-    <string name="build">03/13/2014</string>
+    <string name="app_name">Screen Color Tester</string>
+    <string name="version">1.02</string>
+    <string name="build">06/06/2016</string>
 </resources>
