@@ -8,4 +8,4 @@ DEVELOPER: huhx0015
 
 ## Description
 
-This is a simple Android application with a basic user interface that changes the background screen color for screen testing purposes. May be useful for detecting dead pixels.
+This is a simple Android application with a basic user interface that changes the background screen color for screen testing purposes. This application can be used for detecting dead pixels.
