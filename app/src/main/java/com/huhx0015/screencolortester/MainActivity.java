@@ -1,4 +1,4 @@
-package com.yoonhuh.scncolor;
+package com.huhx0015.screencolortester;
 
 import android.graphics.Color;
 import android.os.Bundle;
