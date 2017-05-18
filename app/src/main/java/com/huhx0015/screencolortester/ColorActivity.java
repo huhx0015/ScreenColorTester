@@ -2,7 +2,7 @@ package com.huhx0015.screencolortester;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -10,14 +10,13 @@ import android.widget.FrameLayout;
 import java.util.Random;
 
 /** -----------------------------------------------------------------------------------------------
- *  [MainActivity] CLASS
- *  PROGRAMMER: Michael Yoon Huh (HUHX0015)
- *  DESCRIPTION: MainActivity class is responsible for handling the first activity in the app and sets
- *  up the references and the click actions for the color buttons.
+ *  [ColorActivity] CLASS
+ *  DEVELOPER: Huh X0015
+ *  DESCRIPTION: ColorActivity class is the main activity class for this application.
  *  -----------------------------------------------------------------------------------------------
  */
 
-public class MainActivity extends Activity {
+public class ColorActivity extends AppCompatActivity {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
