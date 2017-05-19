@@ -75,7 +75,7 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/sct_button_background"
+                    android:background="@drawable/selector_color_button"
                     android:id="@+id/red_button_container"
                     android:padding="5dp">
 
@@ -98,7 +98,7 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/sct_button_background"
+                    android:background="@drawable/selector_color_button"
                     android:id="@+id/blue_button_container"
                     android:padding="5dp">
 
@@ -121,7 +121,7 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/sct_button_background"
+                    android:background="@drawable/selector_color_button"
                     android:id="@+id/green_button_container"
                     android:padding="5dp">
 
@@ -147,7 +147,7 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/sct_button_background"
+                    android:background="@drawable/selector_color_button"
                     android:id="@+id/black_button_container"
                     android:padding="5dp">
 
@@ -170,7 +170,7 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/sct_button_background"
+                    android:background="@drawable/selector_color_button"
                     android:id="@+id/white_button_container"
                     android:padding="5dp">
 
@@ -193,7 +193,7 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/sct_button_background"
+                    android:background="@drawable/selector_color_button"
                     android:id="@+id/brown_button_container"
                     android:padding="5dp">
 
@@ -220,7 +220,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/grey_button_container"
-                    android:background="@drawable/sct_button_background"
+                    android:background="@drawable/selector_color_button"
                     android:padding="5dp">
 
                     <Button
@@ -244,7 +244,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/purple_button_container"
-                    android:background="@drawable/sct_button_background"
+                    android:background="@drawable/selector_color_button"
                     android:padding="5dp">
 
                     <Button
@@ -268,7 +268,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/pink_button_container"
-                    android:background="@drawable/sct_button_background"
+                    android:background="@drawable/selector_color_button"
                     android:padding="5dp">
 
                     <Button

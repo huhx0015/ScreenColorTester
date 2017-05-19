@@ -2,8 +2,8 @@
 <resources>
 
     <!--APPLICATION COLORS-->
-    <color name="colorPrimary">#424242</color>
-    <color name="colorPrimaryDark">#212121</color>
-    <color name="colorAccent">#00796B</color>
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#263238</color>
+    <color name="colorAccent">#00ACC1</color>
 
 </resources>
