@@ -1,184 +1,84 @@
 package com.huhx0015.screencolortester.presentation.ui.activities;
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import com.huhx0015.screencolortester.R;
-import com.huhx0015.screencolortester.presentation.presenters.ColorPresenter;
-import java.util.Random;
+import com.huhx0015.screencolortester.domain.models.ScreenColor;
+import com.huhx0015.screencolortester.domain.repositories.implementations.ColorRepositoryImpl;
+import com.huhx0015.screencolortester.presentation.presenters.implementations.ColorPresenterImpl;
+import com.huhx0015.screencolortester.presentation.ui.view.ColorView;
+import java.util.List;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /** -----------------------------------------------------------------------------------------------
  *  [ColorActivity] CLASS
  *  DEVELOPER: Huh X0015
- *  DESCRIPTION: ColorActivity class is the main activity class for this application.
+ *  DESCRIPTION: ColorActivity class is the primary activity class for this application, which
+ *  displays the list of colors for the user to select from. When a color is selected, an intent
+ *  to FullColorActivity is launched to display the color in fullscreen.
  *  -----------------------------------------------------------------------------------------------
  */
 
-public class ColorActivity extends AppCompatActivity implements ColorPresenter.View {
+public class ColorActivity extends AppCompatActivity implements ColorView {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
-    // Button variables.
-    Button red, black, white, green, grey, brown, pink, blue, purple, random;
+    // CONSTANTS VARIABLES:
+    private static final int COLOR_COLUMNS_VALUE = 3;
+    private static final int PREFETCH_VALUE = 6;
+
+    // PRESENTER VARIABLES:
+    private ColorPresenterImpl mPresenter;
 
     // VIEW INJECTION VARIABLES:
+    @BindView(R.id.color_floating_action_button) FloatingActionButton mFab;
+    @BindView(R.id.color_recycler_view) RecyclerView mColorRecyclerView;
+    @BindView(R.id.color_toolbar) Toolbar mToolbar;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
-    // onCreate(): The initial function that is called when the activity is run. onCreate() only runs
-    // when the activity is first started.
+    // onCreate(): The initial function that is called when the activity is run. onCreate() only
+    // runs when the activity is first started.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_old);
-
-        setUpColorButtons(); // Sets up the color buttons.
+        setContentView(R.layout.activity_color);
+        ButterKnife.bind(this);
+        mPresenter = new ColorPresenterImpl(this, new ColorRepositoryImpl());
+        mPresenter.initView();
     }
 
-    /** ADDITIONAL METHODS _____________________________________________________________________ **/
+    /** INIT METHODS ___________________________________________________________________________ **/
 
-    // randomColor(): Generates a random number for the random color background.
-    private int randomColor() {
-
-        // Generates random number and sets the variable.
-        Random rand = new Random();
-        int random_number = rand.nextInt(255 - 1) + 1; // Establishes the range to 255.
-
-        return random_number;
+    @OnClick(R.id.color_floating_action_button)
+    public void colorFloatingActionButton() {
+        mPresenter.fabButtonClicked();
     }
 
-    // setUpColorButtons(): Sets up the button listeners for the color buttons.
-    private void setUpColorButtons() {
+    private void initToolbar() {
+        setSupportActionBar(mToolbar);
+    }
 
-        // Defines the local variables for the layout.
-        final FrameLayout layout = (FrameLayout) findViewById(R.id.main_layout);
-        final WindowManager.LayoutParams layoutParams = this.getWindow().getAttributes();
+    private void initRecyclerView(List<ScreenColor> colorList) {
+        GridLayoutManager layoutManager = new GridLayoutManager(this, COLOR_COLUMNS_VALUE);
+        layoutManager.setItemPrefetchEnabled(true);
+        layoutManager.setInitialPrefetchItemCount(PREFETCH_VALUE);
 
-        // Initializes and sets the proper Button resources to the Button variables.
-        red = (Button) findViewById(R.id.bRed);
-        white = (Button) findViewById(R.id.bWhite);
-        blue = (Button) findViewById(R.id.bBlue);
-        green = (Button) findViewById(R.id.bGreen);
-        pink = (Button) findViewById(R.id.bPink);
-        brown = (Button) findViewById(R.id.bBrown);
-        purple = (Button) findViewById(R.id.bPurple);
-        black = (Button) findViewById(R.id.bBlack);
-        grey = (Button) findViewById(R.id.bGrey);
-        random = (Button) findViewById(R.id.bRandom);
+        mColorRecyclerView.setLayoutManager(layoutManager);
+        mColorRecyclerView.setHasFixedSize(true);
+        mColorRecyclerView.setDrawingCacheEnabled(true);
+        mColorRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-        // Action for pressing on the red button.
-        red.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.RED); // Sets the background red.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
-
-        // Action for pressing on the red button.
-        white.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.WHITE); // Sets the background white.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
-
-        // Action for pressing on the blue button.
-        blue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.BLUE); // Sets the background blue.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
-
-        // Action for pressing on the green button.
-        green.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.GREEN); // Sets the background green.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
-
-        // Action for pressing on the pink button.
-        pink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.rgb(255, 0, 255)); // Sets the background pink.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
-
-        // Action for pressing on the brown button.
-        brown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.rgb(97, 33, 11)); // Sets the background brown.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
-
-        // Action for pressing on the purple button.
-        purple.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.rgb(75, 8, 138)); // Sets the background purple.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
-
-        // Action for pressing on the black button.
-        black.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.BLACK); // Sets the background black.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
-
-        // Action for pressing on the grey button.
-        grey.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.rgb(138, 138, 138)); // Sets the background grey.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
-
-        // Action for pressing on the random button.
-        random.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                layout.setBackgroundColor(Color.rgb(randomColor(), randomColor(), randomColor())); // Sets the background to a random color.
-                layoutParams.screenBrightness = 1.0F; // Raises the brightness level.
-                getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
-            }
-        });
+//        RecipeListAdapter adapter = new RecipeListAdapter(mPresenter.getRecipeResults(), this);
+//        adapter.setHasStableIds(true);
+//        mColorRecyclerView.setAdapter(adapter);
     }
 
     /** VIEW METHODS ___________________________________________________________________________ **/
@@ -195,6 +95,26 @@ public class ColorActivity extends AppCompatActivity implements ColorPresenter.V
 
     @Override
     public void showError(String message) {
+
+    }
+
+    @Override
+    public void showView() {
+        initToolbar();
+    }
+
+    @Override
+    public void showColorList(List<ScreenColor> colorList) {
+        initRecyclerView(colorList);
+    }
+
+    @Override
+    public void onFabButtonClicked() {
+
+    }
+
+    @Override
+    public void onRandomButtonClicked() {
 
     }
 }
