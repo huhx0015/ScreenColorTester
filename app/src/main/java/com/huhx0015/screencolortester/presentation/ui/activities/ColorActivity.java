@@ -1,4 +1,4 @@
-package com.huhx0015.screencolortester;
+package com.huhx0015.screencolortester.presentation.ui.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
+
+import com.huhx0015.screencolortester.R;
+
 import java.util.Random;
 
 /** -----------------------------------------------------------------------------------------------
