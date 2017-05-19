@@ -9,7 +9,7 @@ public class ScreenColor {
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // COLOR ATTRIBUTE VARIABLES:
-    public int resource;
+    public Integer resource;
     public int red;
     public int green;
     public int blue;

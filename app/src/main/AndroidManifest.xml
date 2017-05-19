@@ -28,6 +28,11 @@
             android:label="@string/app_name">
         </activity>
 
+        <activity
+            android:name=".presentation.ui.activities.ColorTestActivity"
+            android:label="@string/app_name">
+        </activity>
+
     </application>
 
 </manifest>

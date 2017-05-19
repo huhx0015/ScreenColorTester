@@ -10,8 +10,8 @@ public interface ColorPresenter extends BasePresenter {
 
     void getAllColors();
 
-    void fabButtonClicked();
+    void testButtonClicked();
 
-    void randomButtonClicked();
+    void fabButtonClicked();
 
 }

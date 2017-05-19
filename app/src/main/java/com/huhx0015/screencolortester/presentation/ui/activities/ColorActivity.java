@@ -38,7 +38,6 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     private ColorPresenterImpl mPresenter;
 
     // VIEW INJECTION VARIABLES:
-    @BindView(R.id.color_floating_action_button) FloatingActionButton mFab;
     @BindView(R.id.color_recycler_view) RecyclerView mColorRecyclerView;
     @BindView(R.id.color_toolbar) Toolbar mToolbar;
 
@@ -56,6 +55,11 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     }
 
     /** INIT METHODS ___________________________________________________________________________ **/
+
+    @OnClick(R.id.color_test_button)
+    public void colorTestButton() {
+        mPresenter.testButtonClicked();
+    }
 
     @OnClick(R.id.color_floating_action_button)
     public void colorFloatingActionButton() {
