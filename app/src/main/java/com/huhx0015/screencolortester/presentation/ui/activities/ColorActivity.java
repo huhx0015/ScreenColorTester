@@ -7,9 +7,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
-
 import com.huhx0015.screencolortester.R;
-
+import com.huhx0015.screencolortester.presentation.presenters.ColorPresenter;
 import java.util.Random;
 
 /** -----------------------------------------------------------------------------------------------
@@ -19,14 +18,14 @@ import java.util.Random;
  *  -----------------------------------------------------------------------------------------------
  */
 
-public class ColorActivity extends AppCompatActivity {
+public class ColorActivity extends AppCompatActivity implements ColorPresenter.View {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // Button variables.
     Button red, black, white, green, grey, brown, pink, blue, purple, random;
 
-    /** ACTIVITY LIFECYCLE FUNCTIONALITY _______________________________________________________ **/
+    /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
     // onCreate(): The initial function that is called when the activity is run. onCreate() only runs
     // when the activity is first started.
@@ -38,7 +37,7 @@ public class ColorActivity extends AppCompatActivity {
         setUpColorButtons(); // Sets up the color buttons.
     }
 
-    /** ADDITIONAL FUNCTIONALITY _______________________________________________________________ **/
+    /** ADDITIONAL METHODS _____________________________________________________________________ **/
 
     // randomColor(): Generates a random number for the random color background.
     private int randomColor() {
@@ -178,5 +177,22 @@ public class ColorActivity extends AppCompatActivity {
                 getWindow().setAttributes(layoutParams); // Sets the attributes onto the layout.
             }
         });
+    }
+
+    /** VIEW METHODS ___________________________________________________________________________ **/
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showError(String message) {
+
     }
 }
