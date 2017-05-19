@@ -6,11 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.huhx0015.screencolortester"
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -44,6 +43,9 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    // THIRD-PARTY LIBRARIES
+    compile 'com.github.clans:fab:1.6.4'
 
     // TEST LIBRARIES
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'

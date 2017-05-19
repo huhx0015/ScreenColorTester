@@ -25,6 +25,8 @@ public class ColorActivity extends AppCompatActivity implements ColorPresenter.V
     // Button variables.
     Button red, black, white, green, grey, brown, pink, blue, purple, random;
 
+    // VIEW INJECTION VARIABLES:
+
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
     // onCreate(): The initial function that is called when the activity is run. onCreate() only runs
@@ -32,7 +34,7 @@ public class ColorActivity extends AppCompatActivity implements ColorPresenter.V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_old);
 
         setUpColorButtons(); // Sets up the color buttons.
     }
