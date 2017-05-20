@@ -16,7 +16,7 @@ public class ColorUtils {
     /** UTILITY METHODS ________________________________________________________________________ **/
 
     // getAllColors(): Returns a list of all available colors.
-    public List<ScreenColor> getAllColors() {
+    public static List<ScreenColor> getAllColors() {
 
         List<ScreenColor> colorList = new ArrayList<>();
 

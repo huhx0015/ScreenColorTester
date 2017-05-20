@@ -1,6 +1,7 @@
 package com.huhx0015.screencolortester.presentation.ui.activities;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import com.huhx0015.screencolortester.domain.models.ScreenColor;
 import com.huhx0015.screencolortester.domain.repositories.implementations.ColorRepositoryImpl;
 import com.huhx0015.screencolortester.presentation.presenters.implementations.ColorPresenterImpl;
 import com.huhx0015.screencolortester.presentation.ui.view.ColorView;
+import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +35,9 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     private static final int COLOR_COLUMNS_VALUE = 3;
     private static final int PREFETCH_VALUE = 6;
 
+    // INSTANCE VARIABLES:
+    private static final String INSTANCE_COLOR_LIST = ColorActivity.class.getSimpleName() + "_COLOR_LIST";
+
     // PRESENTER VARIABLES:
     private ColorPresenterImpl mPresenter;
 
@@ -51,6 +56,17 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         ButterKnife.bind(this);
         mPresenter = new ColorPresenterImpl(this, new ColorRepositoryImpl());
         mPresenter.initView();
+        initColorList(savedInstanceState);
+    }
+
+    /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (mPresenter.getAllColors() != null) {
+            outState.putParcelableArrayList(INSTANCE_COLOR_LIST, new ArrayList<Parcelable>(mPresenter.getAllColors()));
+        }
     }
 
     /** INIT METHODS ___________________________________________________________________________ **/
@@ -63,6 +79,16 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     @OnClick(R.id.color_floating_action_button)
     public void colorFloatingActionButton() {
         mPresenter.fabButtonClicked();
+    }
+
+    private void initColorList(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            List<ScreenColor> colorList = savedInstanceState.getParcelableArrayList(INSTANCE_COLOR_LIST);
+            if (colorList != null) {
+                mPresenter.setColorList(colorList);
+            }
+        }
+        mPresenter.onColorListLoaded();
     }
 
     private void initToolbar() {
