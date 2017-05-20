@@ -21,4 +21,9 @@ public class FullColorPresenterImpl implements FullColorPresenter {
         // TODO: Sets color in repository.
         mView.showBackgroundColor(color);
     }
+
+    @Override
+    public void setBrightness() {
+        mView.showBrightness();
+    }
 }

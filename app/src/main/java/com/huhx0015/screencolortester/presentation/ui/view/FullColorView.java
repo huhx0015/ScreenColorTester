@@ -9,4 +9,6 @@ import com.huhx0015.screencolortester.domain.models.ScreenColor;
 public interface FullColorView extends BaseView {
 
     void showBackgroundColor(ScreenColor color);
+
+    void showBrightness();
 }

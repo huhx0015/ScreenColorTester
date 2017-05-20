@@ -9,4 +9,6 @@ import com.huhx0015.screencolortester.domain.models.ScreenColor;
 public interface FullColorPresenter {
 
     void setColorBackground(ScreenColor color);
+
+    void setBrightness();
 }

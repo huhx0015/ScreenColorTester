@@ -9,6 +9,7 @@ import com.huhx0015.screencolortester.R;
 import com.huhx0015.screencolortester.constants.ColorConstants;
 import com.huhx0015.screencolortester.domain.models.ScreenColor;
 import com.huhx0015.screencolortester.presentation.presenters.implementations.FullColorPresenterImpl;
+import com.huhx0015.screencolortester.presentation.ui.utils.DisplayUtils;
 import com.huhx0015.screencolortester.presentation.ui.view.FullColorView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +44,8 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
                 mPresenter.setColorBackground(color);
             }
         }
+
+        mPresenter.setBrightness();
     }
 
     /** VIEW METHODS ___________________________________________________________________________ **/
@@ -54,6 +57,11 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
         } else {
             mActivityLayout.setBackgroundColor(Color.rgb(color.red, color.green, color.blue));
         }
+    }
+
+    @Override
+    public void showBrightness() {
+        DisplayUtils.setMaximumBrightness(this);
     }
 
     @Override
