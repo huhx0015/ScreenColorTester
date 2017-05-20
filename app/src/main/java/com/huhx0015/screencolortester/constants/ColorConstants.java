@@ -8,6 +8,9 @@ public class ColorConstants {
 
     /** CONSTANT VARIABLES _____________________________________________________________________ **/
 
+    // BUNDLE CONSTANTS:
+    public static final String BUNDLE_SCREEN_COLOR = "BUNDLE_SCREEN_COLOR";
+
     // COLOR CONSTANTS:
     public static final String BLACK = "Black";
     public static final String DKGRAY = "Dark Gray";

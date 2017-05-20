@@ -59,7 +59,7 @@ public class ColorPresenterImpl implements ColorPresenter {
         if (mRepository.getAllColors() == null) {
             mRepository.initColorList();
         }
-        mView.showColorList(mRepository.getAllColors());
+        mView.showColorList();
     }
 
     @Override

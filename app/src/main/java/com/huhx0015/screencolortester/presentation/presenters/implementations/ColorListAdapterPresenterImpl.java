@@ -3,6 +3,8 @@ package com.huhx0015.screencolortester.presentation.presenters.implementations;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.AppCompatImageView;
+
+import com.huhx0015.screencolortester.constants.ColorConstants;
 import com.huhx0015.screencolortester.domain.models.ScreenColor;
 import com.huhx0015.screencolortester.domain.repositories.ColorRepository;
 import com.huhx0015.screencolortester.domain.repositories.implementations.ColorRepositoryImpl;
@@ -18,15 +20,20 @@ import java.util.List;
 
 public class ColorListAdapterPresenterImpl implements ColorListAdapterPresenter {
 
-    private static final String BUNDLE_SCREEN_COLOR = ColorListAdapterPresenterImpl.class + "_SCREEN_COLOR";
+    /** CLASS VARIABLES ________________________________________________________________________ **/
 
+    // PRESENTER VARIABLES:
     private ColorListAdapterView mView;
     private ColorRepository mRepository;
+
+    /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
     public ColorListAdapterPresenterImpl(ColorListAdapterView view) {
         this.mView = view;
         this.mRepository = new ColorRepositoryImpl();
     }
+
+    /** PRESENTER METHODS ______________________________________________________________________ **/
 
     @Override
     public void resume() {}
@@ -70,7 +77,7 @@ public class ColorListAdapterPresenterImpl implements ColorListAdapterPresenter 
         }
 
         Intent fullColorIntent = new Intent(context, FullColorActivity.class);
-        fullColorIntent.putExtra(BUNDLE_SCREEN_COLOR, color);
+        fullColorIntent.putExtra(ColorConstants.BUNDLE_SCREEN_COLOR, color);
         context.startActivity(fullColorIntent);
     }
 }

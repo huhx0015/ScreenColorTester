@@ -47,8 +47,6 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
-    // onCreate(): The initial function that is called when the activity is run. onCreate() only
-    // runs when the activity is first started.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +93,7 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         setSupportActionBar(mToolbar);
     }
 
-    private void initRecyclerView(List<ScreenColor> colorList) {
+    private void initRecyclerView() {
         GridLayoutManager layoutManager = new GridLayoutManager(this, COLOR_COLUMNS_VALUE);
         layoutManager.setItemPrefetchEnabled(true);
         layoutManager.setInitialPrefetchItemCount(PREFETCH_VALUE);
@@ -127,8 +125,8 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     }
 
     @Override
-    public void showColorList(List<ScreenColor> colorList) {
-        initRecyclerView(colorList);
+    public void showColorList() {
+        initRecyclerView();
     }
 
     @Override
