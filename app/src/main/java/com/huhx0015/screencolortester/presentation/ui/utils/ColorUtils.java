@@ -31,6 +31,7 @@ public class ColorUtils {
         colorList.add(new ScreenColor(ColorConstants.YELLOW, Color.YELLOW));
         colorList.add(new ScreenColor(ColorConstants.CYAN, Color.CYAN));
         colorList.add(new ScreenColor(ColorConstants.MAGENTA, Color.MAGENTA));
+        colorList.add(new ScreenColor());
 
         return colorList;
     }

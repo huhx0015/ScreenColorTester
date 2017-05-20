@@ -9,8 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import com.huhx0015.screencolortester.R;
 import com.huhx0015.screencolortester.domain.models.ScreenColor;
-import com.huhx0015.screencolortester.domain.repositories.implementations.ColorRepositoryImpl;
 import com.huhx0015.screencolortester.presentation.presenters.implementations.ColorPresenterImpl;
+import com.huhx0015.screencolortester.presentation.ui.adapters.ColorListAdapter;
 import com.huhx0015.screencolortester.presentation.ui.view.ColorView;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // CONSTANTS VARIABLES:
-    private static final int COLOR_COLUMNS_VALUE = 3;
+    private static final int COLOR_COLUMNS_VALUE = 4;
     private static final int PREFETCH_VALUE = 6;
 
     // INSTANCE VARIABLES:
@@ -54,7 +54,7 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
         ButterKnife.bind(this);
-        mPresenter = new ColorPresenterImpl(this, new ColorRepositoryImpl());
+        mPresenter = new ColorPresenterImpl(this);
         mPresenter.initView();
         initColorList(savedInstanceState);
     }
@@ -105,27 +105,21 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         mColorRecyclerView.setDrawingCacheEnabled(true);
         mColorRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-//        RecipeListAdapter adapter = new RecipeListAdapter(mPresenter.getRecipeResults(), this);
-//        adapter.setHasStableIds(true);
-//        mColorRecyclerView.setAdapter(adapter);
+        ColorListAdapter adapter = new ColorListAdapter(mPresenter.getAllColors());
+        adapter.setHasStableIds(true);
+        mColorRecyclerView.setAdapter(adapter);
     }
 
     /** VIEW METHODS ___________________________________________________________________________ **/
 
     @Override
-    public void showProgress() {
-
-    }
+    public void showProgress() {}
 
     @Override
-    public void hideProgress() {
-
-    }
+    public void hideProgress() {}
 
     @Override
-    public void showError(String message) {
-
-    }
+    public void showError(String message) {}
 
     @Override
     public void showView() {

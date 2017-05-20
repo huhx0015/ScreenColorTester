@@ -23,6 +23,10 @@ public class ScreenColor implements Parcelable {
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
+    public ScreenColor() {
+        this.isRandom = true;
+    }
+
     public ScreenColor(String color, int resource) {
         this.name = color;
         this.resource = resource;
@@ -41,6 +45,14 @@ public class ScreenColor implements Parcelable {
         green = in.readInt();
         blue = in.readInt();
         name = in.readString();
+    }
+
+    /** SET METHODS ____________________________________________________________________________ **/
+
+    public void setRGB(int r, int g, int b) {
+        this.red = r;
+        this.green = g;
+        this.blue = b;
     }
 
     /** PARCELABLE METHODS _____________________________________________________________________ **/

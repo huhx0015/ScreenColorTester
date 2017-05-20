@@ -2,6 +2,7 @@ package com.huhx0015.screencolortester.presentation.presenters.implementations;
 
 import com.huhx0015.screencolortester.domain.models.ScreenColor;
 import com.huhx0015.screencolortester.domain.repositories.ColorRepository;
+import com.huhx0015.screencolortester.domain.repositories.implementations.ColorRepositoryImpl;
 import com.huhx0015.screencolortester.presentation.presenters.ColorPresenter;
 import com.huhx0015.screencolortester.presentation.ui.view.ColorView;
 import java.util.List;
@@ -15,25 +16,19 @@ public class ColorPresenterImpl implements ColorPresenter {
     private ColorView mView;
     private ColorRepository mRepository;
 
-    public ColorPresenterImpl(ColorView view, ColorRepository repository) {
+    public ColorPresenterImpl(ColorView view) {
         this.mView = view;
-        this.mRepository = repository;
+        this.mRepository = new ColorRepositoryImpl();
     }
 
     @Override
-    public void resume() {
-
-    }
+    public void resume() {}
 
     @Override
-    public void pause() {
-
-    }
+    public void pause() {}
 
     @Override
-    public void stop() {
-
-    }
+    public void stop() {}
 
     @Override
     public void destroy() {
@@ -42,9 +37,7 @@ public class ColorPresenterImpl implements ColorPresenter {
     }
 
     @Override
-    public void onError(String message) {
-
-    }
+    public void onError(String message) {}
 
     @Override
     public void initView() {
