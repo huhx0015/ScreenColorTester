@@ -10,8 +10,6 @@ public interface ColorView extends BaseView {
 
     void showColorList();
 
-    void onFabButtonClicked();
-
     void onRandomButtonClicked();
 
 }

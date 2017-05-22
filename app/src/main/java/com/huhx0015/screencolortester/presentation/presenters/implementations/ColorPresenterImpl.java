@@ -66,9 +66,4 @@ public class ColorPresenterImpl implements ColorPresenter {
     public void testButtonClicked() {
 
     }
-
-    @Override
-    public void fabButtonClicked() {
-
-    }
 }

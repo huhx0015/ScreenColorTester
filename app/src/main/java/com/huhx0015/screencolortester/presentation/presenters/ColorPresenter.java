@@ -19,6 +19,4 @@ public interface ColorPresenter extends BasePresenter {
 
     void testButtonClicked();
 
-    void fabButtonClicked();
-
 }

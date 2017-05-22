@@ -68,7 +68,7 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
     @Override
     public void showSnackbar(ScreenColor color) {
         SnackbarUtils.displaySnackbar(mActivityLayout,
-                String.format(getString(R.string.snackbar_showing_full_color).toUpperCase(), color.name),
+                String.format(getString(R.string.snackbar_showing_full_color), color.name.toUpperCase()),
                 Snackbar.LENGTH_SHORT, ContextCompat.getColor(this, R.color.colorPrimary));
     }
 

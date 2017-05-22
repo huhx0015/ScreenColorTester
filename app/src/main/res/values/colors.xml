@@ -6,14 +6,4 @@
     <color name="colorPrimaryDark">#263238</color>
     <color name="colorAccent">#00ACC1</color>
 
-    <!--TEST COLORS-->
-    <color name="colorDarkGray">#A9A9A9</color>
-    <color name="colorGray">#808080</color>
-    <color name="colorLightGray">#D3D3D3</color>
-    <color name="colorGreen">#008000</color>
-    <color name="colorBlue">#0000FF</color>
-    <color name="colorYellow">#FFFF00</color>
-    <color name="colorCyan">#00FFFF</color>
-    <color name="colorMagenta">#FF00FF</color>
-
 </resources>

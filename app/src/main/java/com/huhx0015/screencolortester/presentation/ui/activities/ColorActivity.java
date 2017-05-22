@@ -74,11 +74,6 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         mPresenter.testButtonClicked();
     }
 
-    @OnClick(R.id.color_floating_menu_button)
-    public void colorFloatingActionButton() {
-        mPresenter.fabButtonClicked();
-    }
-
     private void initColorList(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             List<ScreenColor> colorList = savedInstanceState.getParcelableArrayList(INSTANCE_COLOR_LIST);
@@ -127,11 +122,6 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     @Override
     public void showColorList() {
         initRecyclerView();
-    }
-
-    @Override
-    public void onFabButtonClicked() {
-
     }
 
     @Override
