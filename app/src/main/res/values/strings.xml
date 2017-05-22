@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--APPLICATION STRINGS-->
+    <string name="app_name">Screen Color Tester</string>
+
+    <!--TEXT STRINGS-->
+    <string name="text_color_select">SELECT A COLOR:</string>
+
+    <!--BUTTON STRINGS-->
+    <string name="button_screen_test">Screen Test</string>
+
+    <!--SNACKBAR STRINGS-->
+    <string name="snackbar_showing_full_color">Color currently shown: %1$s</string>
+    <string name="snackbar_test_finished">Screen color test has finished.</string>
+    <string name="snackbar_retry">RETRY</string>
+
+</resources>

@@ -4,15 +4,21 @@ Screen Color Tester
 DEVELOPER: huhx0015
 
 ### SCREEN COLOR TESTER
-![screencolortester_preview](https://cloud.githubusercontent.com/assets/1645482/12527404/08539334-c12f-11e5-966b-9a8cbb69dfda.gif)
+![screencolortester_preview](https://cloud.githubusercontent.com/assets/1645482/26298546/8ec365bc-3e8c-11e7-8e75-9342fcff8868.gif)
 
 ## Description
 
-This is a simple Android application with a basic user interface that changes the background screen color for screen testing purposes. This application can be used for detecting dead pixels.
+Screen Color Tester: An Android application used for screen color testing purposes, such as detecting if dead pixels or screen burn-in is present. Screen Color Tester was developed utilizing Clean Architecture.
+
+### Libraries
+
+* Butter Knife: http://jakewharton.github.io/butterknife/
+* LeakCanary: https://github.com/square/leakcanary
+* Timber: https://github.com/JakeWharton/timber
 
 ## License
 
-    Copyright 2014 Michael Huh
+    Copyright 2017 Michael Huh
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

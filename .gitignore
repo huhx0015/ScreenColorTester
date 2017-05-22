@@ -1,3 +1,8 @@
 /Screen Color Tester/src/main/gen
 /.idea
 # Created by .ignore support plugin (hsz.mobi)
+/app/app.iml
+/ScreenColorTester.iml
+/.gradle/
+/local.properties
+/build/
