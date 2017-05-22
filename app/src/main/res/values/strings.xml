@@ -4,6 +4,20 @@
     <!--APPLICATION STRINGS-->
     <string name="app_name">Screen Color Tester</string>
 
+    <!--FLOATING ACTION BUTTON STRINGS-->
+    <string name="fab_black">Black</string>
+    <string name="fab_dark_gray">Dark Gray</string>
+    <string name="fab_gray">Gray</string>
+    <string name="fab_light_gray">Light Gray</string>
+    <string name="fab_white">White</string>
+    <string name="fab_red">Red</string>
+    <string name="fab_green">Green</string>
+    <string name="fab_blue">Blue</string>
+    <string name="fab_yellow">Yellow</string>
+    <string name="fab_cyan">Cyan</string>
+    <string name="fab_magenta">Magenta</string>
+    <string name="fab_random">Random</string>
+
     <!--SNACKBAR STRINGS-->
     <string name="snackbar_showing_full_color">Color currently shown: %1$s</string>
 

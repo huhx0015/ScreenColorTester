@@ -74,7 +74,7 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         mPresenter.testButtonClicked();
     }
 
-    @OnClick(R.id.color_floating_action_button)
+    @OnClick(R.id.color_floating_menu_button)
     public void colorFloatingActionButton() {
         mPresenter.fabButtonClicked();
     }
