@@ -25,7 +25,7 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
     // PRESENTER VARIABLES:
     private FullColorPresenterImpl mPresenter;
 
-    // VIEw INJECTION VARIABLES:
+    // VIEW INJECTION VARIABLES:
     @BindView(R.id.activity_full_color_layout) RelativeLayout mActivityLayout;
 
     /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
@@ -38,11 +38,9 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
         mPresenter = new FullColorPresenterImpl(this);
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            ScreenColor color = bundle.getParcelable(ColorConstants.BUNDLE_SCREEN_COLOR);
-            if (color != null) {
-                mPresenter.setColorBackground(color);
-            }
+        ScreenColor color = bundle.getParcelable(ColorConstants.BUNDLE_SCREEN_COLOR);
+        if (color != null) {
+            mPresenter.setColorBackground(color);
         }
 
         mPresenter.setBrightness();
@@ -52,7 +50,7 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
 
     @Override
     public void showBackgroundColor(ScreenColor color) {
-        if (color.resource != null) {
+        if (color.resource != 0) {
             mActivityLayout.setBackgroundColor(color.resource);
         } else {
             mActivityLayout.setBackgroundColor(Color.rgb(color.red, color.green, color.blue));

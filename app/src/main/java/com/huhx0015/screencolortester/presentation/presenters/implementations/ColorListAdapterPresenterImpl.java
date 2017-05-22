@@ -3,7 +3,6 @@ package com.huhx0015.screencolortester.presentation.presenters.implementations;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.AppCompatImageView;
-
 import com.huhx0015.screencolortester.constants.ColorConstants;
 import com.huhx0015.screencolortester.domain.models.ScreenColor;
 import com.huhx0015.screencolortester.domain.repositories.ColorRepository;

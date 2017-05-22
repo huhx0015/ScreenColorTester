@@ -13,7 +13,7 @@ public class ScreenColor implements Parcelable {
 
     // COLOR ATTRIBUTE VARIABLES:
     public boolean isRandom;
-    public Integer resource;
+    public int resource;
     public int red;
     public int green;
     public int blue;
@@ -41,6 +41,7 @@ public class ScreenColor implements Parcelable {
 
     protected ScreenColor(Parcel in) {
         isRandom = in.readByte() != 0;
+        resource = in.readInt();
         red = in.readInt();
         green = in.readInt();
         blue = in.readInt();
@@ -77,6 +78,7 @@ public class ScreenColor implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte((byte) (isRandom ? 1 : 0));
+        dest.writeInt(resource);
         dest.writeInt(red);
         dest.writeInt(green);
         dest.writeInt(blue);

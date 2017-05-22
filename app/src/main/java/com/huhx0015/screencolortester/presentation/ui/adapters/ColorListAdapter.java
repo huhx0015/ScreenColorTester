@@ -72,7 +72,7 @@ public class ColorListAdapter extends RecyclerView.Adapter<ColorListAdapter.Colo
     public void showColorRow(AppCompatImageView view, ScreenColor color) {
         if (color.isRandom) {
             view.setImageResource(R.drawable.ic_random);
-        } else if (color.resource != null) {
+        } else if (color.resource != 0) {
             view.setBackgroundColor(color.resource);
         } else {
             view.setBackgroundColor(Color.rgb(color.red, color.green, color.blue));
