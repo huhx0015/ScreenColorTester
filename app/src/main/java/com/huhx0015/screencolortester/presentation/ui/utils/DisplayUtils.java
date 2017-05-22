@@ -1,6 +1,7 @@
 package com.huhx0015.screencolortester.presentation.ui.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.WindowManager;
 
 /**
@@ -10,6 +11,10 @@ import android.view.WindowManager;
 public class DisplayUtils {
 
     /** UTILITY METHODS ________________________________________________________________________ **/
+
+    public static int getOrientation(Context context) {
+        return context.getResources().getConfiguration().orientation;
+    }
 
     public static void setMaximumBrightness(Activity activity) {
         WindowManager.LayoutParams windowManagerParams = activity.getWindow().getAttributes();

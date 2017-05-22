@@ -1,8 +1,12 @@
 package com.huhx0015.screencolortester.presentation.ui.activities;
 
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +15,7 @@ import com.huhx0015.screencolortester.R;
 import com.huhx0015.screencolortester.domain.models.ScreenColor;
 import com.huhx0015.screencolortester.presentation.presenters.implementations.ColorPresenterImpl;
 import com.huhx0015.screencolortester.presentation.ui.adapters.ColorListAdapter;
+import com.huhx0015.screencolortester.presentation.ui.utils.DisplayUtils;
 import com.huhx0015.screencolortester.presentation.ui.view.ColorView;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +37,8 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // CONSTANTS VARIABLES:
-    private static final int COLOR_COLUMNS_VALUE = 4;
+    private static final int COLOR_PORTRAIT_COLUMNS_VALUE = 3;
+    private static final int COLOR_LANDSCAPE_COLUMNS_VALUE = 6;
     private static final int PREFETCH_VALUE = 6;
 
     // INSTANCE VARIABLES:
@@ -42,6 +48,8 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     private ColorPresenterImpl mPresenter;
 
     // VIEW INJECTION VARIABLES:
+    @BindView(R.id.color_test_button) AppCompatButton mTestButton;
+    @BindView(R.id.color_select_text) AppCompatTextView mSelectText;
     @BindView(R.id.color_recycler_view) RecyclerView mColorRecyclerView;
     @BindView(R.id.color_toolbar) Toolbar mToolbar;
 
@@ -85,12 +93,22 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         mPresenter.onColorListLoaded();
     }
 
+    private void initText() {
+        mSelectText.setShadowLayer(2, 2, 2, Color.BLACK);
+        mTestButton.setShadowLayer(2, 2, 2, Color.BLACK);
+    }
+
     private void initToolbar() {
         setSupportActionBar(mToolbar);
     }
 
     private void initRecyclerView() {
-        GridLayoutManager layoutManager = new GridLayoutManager(this, COLOR_COLUMNS_VALUE);
+        GridLayoutManager layoutManager;
+        if (DisplayUtils.getOrientation(this) == Configuration.ORIENTATION_PORTRAIT) {
+            layoutManager = new GridLayoutManager(this, COLOR_PORTRAIT_COLUMNS_VALUE);
+        } else {
+            layoutManager = new GridLayoutManager(this, COLOR_LANDSCAPE_COLUMNS_VALUE);
+        }
         layoutManager.setItemPrefetchEnabled(true);
         layoutManager.setInitialPrefetchItemCount(PREFETCH_VALUE);
 
@@ -117,6 +135,7 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
 
     @Override
     public void showView() {
+        initText();
         initToolbar();
     }
 
@@ -126,7 +145,7 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     }
 
     @Override
-    public void onRandomButtonClicked() {
+    public void onTestButtonClicked() {
 
     }
 }

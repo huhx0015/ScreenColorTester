@@ -6,4 +6,7 @@
     <color name="colorPrimaryDark">#263238</color>
     <color name="colorAccent">#00ACC1</color>
 
+    <!--CARD COLORS-->
+    <color name="colorCard">#455A64</color>
+
 </resources>

@@ -13,7 +13,6 @@ Screen Color Tester: An Android application used for screen color testing purpos
 ### Libraries
 
 * Butter Knife: http://jakewharton.github.io/butterknife/
-* Floating Action Button: https://github.com/Clans/FloatingActionButton
 * LeakCanary: https://github.com/square/leakcanary
 
 ## License
