@@ -26,4 +26,7 @@ public class ColorConstants {
     public static final String CYAN = "Cyan";
     public static final String MAGENTA = "Magenta";
     public static final String RANDOM = "Random";
+
+    // TEST CONSTANTS:
+    public static final int TEST_TIME_PER_SCREEN = 10000;
 }
