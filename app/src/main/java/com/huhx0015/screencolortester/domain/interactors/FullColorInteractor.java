@@ -5,4 +5,19 @@ package com.huhx0015.screencolortester.domain.interactors;
  */
 
 public interface FullColorInteractor {
+
+    void start();
+
+    void stop();
+
+    int getTestPosition();
+
+    void setTestPosition(int position);
+
+    interface Callback {
+
+        void onScreenColorChange(int position);
+
+        void onTestFinished();
+    }
 }

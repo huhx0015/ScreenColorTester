@@ -55,12 +55,12 @@ public class FullColorRepositoryImpl implements FullColorRepository {
     }
 
     @Override
-    public int getColorListPosition() {
+    public int getTestPosition() {
         return mTestPosition;
     }
 
     @Override
-    public void setColorListPosition(int positon) {
+    public void setTestPosition(int positon) {
         this.mTestPosition = positon;
     }
 

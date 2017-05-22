@@ -27,6 +27,6 @@ public class ColorConstants {
     public static final String MAGENTA = "Magenta";
     public static final String RANDOM = "Random";
 
-    // TEST CONSTANTS:
-    public static final int TEST_TIME_PER_SCREEN = 10000;
+    // THREAD CONSTANTS:
+    public static final int THREAD_TIME_PER_SCREEN = 5000;
 }

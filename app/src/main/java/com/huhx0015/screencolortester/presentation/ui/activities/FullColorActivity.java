@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.RelativeLayout;
 import com.huhx0015.screencolortester.R;
 import com.huhx0015.screencolortester.constants.ColorConstants;
@@ -28,6 +29,9 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
+    // CONSTANT VARIABLES:
+    private static final int TEST_STARTING_POSITION = 0;
+
     // PRESENTER VARIABLES:
     private FullColorPresenterImpl mPresenter;
 
@@ -47,7 +51,8 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_color);
         ButterKnife.bind(this);
-        mPresenter = new FullColorPresenterImpl(this);
+        mPresenter = new FullColorPresenterImpl(this, this);
+        mPresenter.setBrightness();
 
         if (savedInstanceState != null) {
             initSavedInstance(savedInstanceState);
@@ -55,15 +60,15 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
             initBundle();
         }
 
-        mPresenter.setBrightness();
+        // TEST MODE: If screen color test mode is enabled, the screen color test is started.
+        if (mPresenter.getRepository().getTestMode() && mPresenter.getRepository().getColorList() != null) {
+            int testPosition = mPresenter.getRepository().getTestPosition();
+            mPresenter.setColorBackground(mPresenter.getRepository().getColorList().get(testPosition), true);
+            mPresenter.startTest(testPosition);
+        }
     }
 
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -85,7 +90,7 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
         outState.putBoolean(INSTANCE_TEST_MODE, mPresenter.getRepository().getTestMode());
 
         // TEST POSITION:
-        outState.putInt(INSTANCE_TEST_POSITION, mPresenter.getRepository().getColorListPosition());
+        outState.putInt(INSTANCE_TEST_POSITION, mPresenter.getRepository().getTestPosition());
     }
 
     /** INIT METHODS ___________________________________________________________________________ **/
@@ -108,6 +113,9 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
         // TEST MODE:
         boolean testMode = bundle.getBoolean(ColorConstants.BUNDLE_TEST_MODE);
         mPresenter.getRepository().setTestMode(testMode);
+
+        // TEST POSITION:
+        mPresenter.getRepository().setTestPosition(0);
     }
 
     private void initSavedInstance(Bundle savedInstanceState) {
@@ -130,18 +138,24 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
 
         // TEST POSITION:
         int testPosition = savedInstanceState.getInt(INSTANCE_TEST_POSITION);
-        mPresenter.getRepository().setColorListPosition(testPosition);
+        mPresenter.getRepository().setTestPosition(testPosition);
+        mPresenter.getInteractor().setTestPosition(testPosition);
     }
 
     /** VIEW METHODS ___________________________________________________________________________ **/
 
     @Override
-    public void showBackgroundColor(ScreenColor color) {
-        if (color.resource != 0) {
-            mActivityLayout.setBackgroundColor(color.resource);
-        } else {
-            mActivityLayout.setBackgroundColor(Color.rgb(color.red, color.green, color.blue));
-        }
+    public void showBackgroundColor(final ScreenColor color) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (color.resource != 0) {
+                    mActivityLayout.setBackgroundColor(color.resource);
+                } else {
+                    mActivityLayout.setBackgroundColor(Color.rgb(color.red, color.green, color.blue));
+                }
+            }
+        });
     }
 
     @Override
@@ -150,10 +164,34 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
     }
 
     @Override
-    public void showSnackbar(ScreenColor color) {
-        SnackbarUtils.displaySnackbar(mActivityLayout,
-                String.format(getString(R.string.snackbar_showing_full_color), color.name.toUpperCase()),
-                Snackbar.LENGTH_SHORT, ContextCompat.getColor(this, R.color.colorPrimary));
+    public void showSnackbar(ScreenColor color, final String message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                SnackbarUtils.displaySnackbar(mActivityLayout, message, Snackbar.LENGTH_SHORT,
+                        ContextCompat.getColor(FullColorActivity.this, R.color.colorPrimary));
+            }
+        });
+    }
+
+    @Override
+    public void showTestFinishedSnackbar() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                SnackbarUtils.displaySnackbarWithAction(mActivityLayout,
+                        getString(R.string.snackbar_test_finished),
+                        Snackbar.LENGTH_INDEFINITE,
+                        ContextCompat.getColor(FullColorActivity.this, R.color.colorPrimary),
+                        getString(R.string.snackbar_retry), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mPresenter.setColorBackground(mPresenter.getRepository().getColorList().get(TEST_STARTING_POSITION), true);
+                                mPresenter.startTest(TEST_STARTING_POSITION);
+                            }
+                        });
+            }
+        });
     }
 
     @Override

@@ -12,5 +12,7 @@ public interface FullColorView extends BaseView {
 
     void showBrightness();
 
-    void showSnackbar(ScreenColor color);
+    void showSnackbar(ScreenColor color, String message);
+
+    void showTestFinishedSnackbar();
 }

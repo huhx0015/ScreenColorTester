@@ -1,5 +1,7 @@
 package com.huhx0015.screencolortester.presentation.presenters;
 
+import android.content.Context;
+
 import com.huhx0015.screencolortester.domain.repositories.implementations.ColorRepositoryImpl;
 
 /**
@@ -14,6 +16,6 @@ public interface ColorPresenter extends BasePresenter {
 
     void onColorListLoaded();
 
-    void testButtonClicked();
+    void testButtonClicked(Context context);
 
 }

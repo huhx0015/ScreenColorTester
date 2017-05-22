@@ -12,5 +12,7 @@
 
     <!--SNACKBAR STRINGS-->
     <string name="snackbar_showing_full_color">Color currently shown: %1$s</string>
+    <string name="snackbar_test_finished">Screen color test has finished.</string>
+    <string name="snackbar_retry">RETRY</string>
 
 </resources>

@@ -80,7 +80,7 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
 
     @OnClick(R.id.color_test_button)
     public void colorTestButton() {
-        mPresenter.testButtonClicked();
+        mPresenter.testButtonClicked(this);
     }
 
     private void initColorList(Bundle savedInstanceState) {

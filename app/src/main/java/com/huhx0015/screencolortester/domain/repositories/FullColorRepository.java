@@ -21,9 +21,9 @@ public interface FullColorRepository {
 
     void setColorList(List<ScreenColor> colorList);
 
-    int getColorListPosition();
+    int getTestPosition();
 
-    void setColorListPosition(int positon);
+    void setTestPosition(int positon);
 
     void clearColorList();
 }
