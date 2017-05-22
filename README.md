@@ -4,7 +4,7 @@ Screen Color Tester
 DEVELOPER: huhx0015
 
 ### SCREEN COLOR TESTER
-![screencolortester_preview](https://cloud.githubusercontent.com/assets/1645482/12527404/08539334-c12f-11e5-966b-9a8cbb69dfda.gif)
+![screencolortester_preview](https://cloud.githubusercontent.com/assets/1645482/26298546/8ec365bc-3e8c-11e7-8e75-9342fcff8868.gif)
 
 ## Description
 

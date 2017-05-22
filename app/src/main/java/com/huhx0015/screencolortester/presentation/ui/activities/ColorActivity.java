@@ -143,9 +143,4 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     public void showColorList() {
         initRecyclerView();
     }
-
-    @Override
-    public void onTestButtonClicked() {
-
-    }
 }

@@ -10,6 +10,4 @@ public interface ColorView extends BaseView {
 
     void showColorList();
 
-    void onTestButtonClicked();
-
 }
