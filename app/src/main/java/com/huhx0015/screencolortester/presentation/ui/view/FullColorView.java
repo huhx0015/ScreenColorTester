@@ -11,4 +11,6 @@ public interface FullColorView extends BaseView {
     void showBackgroundColor(ScreenColor color);
 
     void showBrightness();
+
+    void showSnackbar(ScreenColor color);
 }

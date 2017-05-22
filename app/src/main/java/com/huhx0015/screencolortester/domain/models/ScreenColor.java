@@ -23,7 +23,8 @@ public class ScreenColor implements Parcelable {
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
-    public ScreenColor() {
+    public ScreenColor(String color) {
+        this.name = color;
         this.isRandom = true;
     }
 

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--APPLICATION STRINGS-->
     <string name="app_name">Screen Color Tester</string>
-    <string name="version">1.02</string>
-    <string name="build">06/06/2016</string>
-    <string name="title_activity_main2">Main2Activity</string>
+
+    <!--SNACKBAR STRINGS-->
+    <string name="snackbar_showing_full_color">Color currently shown: %1$s</string>
+
 </resources>

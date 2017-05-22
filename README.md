@@ -10,6 +10,12 @@ DEVELOPER: huhx0015
 
 Screen Color Tester: An Android application used for screen color testing purposes, such as detecting if dead pixels or screen burn-in is present. Screen Color Tester was developed utilizing Clean Architecture.
 
+### Libraries
+
+* Butter Knife: http://jakewharton.github.io/butterknife/
+* Floating Action Button: https://github.com/Clans/FloatingActionButton
+* LeakCanary: https://github.com/square/leakcanary
+
 ## License
 
     Copyright 2017 Michael Huh

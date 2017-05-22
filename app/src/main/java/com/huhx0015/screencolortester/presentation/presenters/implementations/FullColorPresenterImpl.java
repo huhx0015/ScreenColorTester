@@ -10,16 +10,24 @@ import com.huhx0015.screencolortester.presentation.ui.view.FullColorView;
 
 public class FullColorPresenterImpl implements FullColorPresenter {
 
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
+    // VIEW VARIABLES:
     private FullColorView mView;
+
+    /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
     public FullColorPresenterImpl(FullColorView view) {
         this.mView = view;
     }
 
+    /** PRESENTER METHODS ______________________________________________________________________ **/
+
     @Override
     public void setColorBackground(ScreenColor color) {
         // TODO: Sets color in repository.
         mView.showBackgroundColor(color);
+        mView.showSnackbar(color);
     }
 
     @Override

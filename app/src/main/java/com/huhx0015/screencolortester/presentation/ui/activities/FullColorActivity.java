@@ -3,6 +3,8 @@ package com.huhx0015.screencolortester.presentation.ui.activities;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 import com.huhx0015.screencolortester.R;
@@ -10,6 +12,7 @@ import com.huhx0015.screencolortester.constants.ColorConstants;
 import com.huhx0015.screencolortester.domain.models.ScreenColor;
 import com.huhx0015.screencolortester.presentation.presenters.implementations.FullColorPresenterImpl;
 import com.huhx0015.screencolortester.presentation.ui.utils.DisplayUtils;
+import com.huhx0015.screencolortester.presentation.ui.utils.SnackbarUtils;
 import com.huhx0015.screencolortester.presentation.ui.view.FullColorView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,6 +63,13 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
     @Override
     public void showBrightness() {
         DisplayUtils.setMaximumBrightness(this);
+    }
+
+    @Override
+    public void showSnackbar(ScreenColor color) {
+        SnackbarUtils.displaySnackbar(mActivityLayout,
+                String.format(getString(R.string.snackbar_showing_full_color), color.name),
+                Snackbar.LENGTH_SHORT, ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
     @Override
