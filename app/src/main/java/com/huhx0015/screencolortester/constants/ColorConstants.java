@@ -10,6 +10,8 @@ public class ColorConstants {
 
     // BUNDLE CONSTANTS:
     public static final String BUNDLE_SCREEN_COLOR = "BUNDLE_SCREEN_COLOR";
+    public static final String BUNDLE_COLOR_LIST = "BUNDLE_COLOR_LIST";
+    public static final String BUNDLE_TEST_MODE = "BUNDLE_TEST_MODE";
 
     // COLOR CONSTANTS:
     public static final String BLACK = "Black";

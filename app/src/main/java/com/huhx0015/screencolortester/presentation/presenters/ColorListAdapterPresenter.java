@@ -3,7 +3,7 @@ package com.huhx0015.screencolortester.presentation.presenters;
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
 import com.huhx0015.screencolortester.domain.models.ScreenColor;
-import java.util.List;
+import com.huhx0015.screencolortester.domain.repositories.ColorRepository;
 
 /**
  * Created by Michael Yoon Huh on 5/19/2017.
@@ -11,9 +11,7 @@ import java.util.List;
 
 public interface ColorListAdapterPresenter extends BasePresenter {
 
-    List<ScreenColor> getAllColors();
-
-    void setColorList(List<ScreenColor> colorList);
+    ColorRepository getRepository();
 
     void setColor(AppCompatImageView view, ScreenColor color);
 

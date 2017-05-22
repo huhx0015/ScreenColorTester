@@ -2,6 +2,7 @@ package com.huhx0015.screencolortester.presentation.ui.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -14,6 +15,8 @@ import com.huhx0015.screencolortester.presentation.presenters.implementations.Fu
 import com.huhx0015.screencolortester.presentation.ui.utils.DisplayUtils;
 import com.huhx0015.screencolortester.presentation.ui.utils.SnackbarUtils;
 import com.huhx0015.screencolortester.presentation.ui.view.FullColorView;
+import java.util.ArrayList;
+import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -28,6 +31,12 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
     // PRESENTER VARIABLES:
     private FullColorPresenterImpl mPresenter;
 
+    // INSTANCE VARIABLES:
+    private static final String INSTANCE_COLOR = FullColorActivity.class.getSimpleName() + "_COLOR";
+    private static final String INSTANCE_COLOR_LIST = FullColorActivity.class.getSimpleName() + "_COLOR_LIST";
+    private static final String INSTANCE_TEST_MODE = FullColorActivity.class.getSimpleName() + "_TEST_MODE";
+    private static final String INSTANCE_TEST_POSITION = FullColorActivity.class.getSimpleName() + "_TEST_POSITION";
+
     // VIEW INJECTION VARIABLES:
     @BindView(R.id.activity_full_color_layout) RelativeLayout mActivityLayout;
 
@@ -40,13 +49,88 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
         ButterKnife.bind(this);
         mPresenter = new FullColorPresenterImpl(this);
 
-        Bundle bundle = getIntent().getExtras();
-        ScreenColor color = bundle.getParcelable(ColorConstants.BUNDLE_SCREEN_COLOR);
-        if (color != null) {
-            mPresenter.setColorBackground(color);
+        if (savedInstanceState != null) {
+            initSavedInstance(savedInstanceState);
+        } else {
+            initBundle();
         }
 
         mPresenter.setBrightness();
+    }
+
+    /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // SCREEN COLOR:
+        ScreenColor color = mPresenter.getRepository().getColor();
+        if (color != null) {
+            outState.putParcelable(INSTANCE_COLOR, mPresenter.getRepository().getColor());
+        }
+
+        // COLOR LIST:
+        List<ScreenColor> colorList = mPresenter.getRepository().getColorList();
+        if (colorList != null) {
+            outState.putParcelableArrayList(INSTANCE_COLOR_LIST, new ArrayList<Parcelable>(colorList));
+        }
+
+        // TEST MODE:
+        outState.putBoolean(INSTANCE_TEST_MODE, mPresenter.getRepository().getTestMode());
+
+        // TEST POSITION:
+        outState.putInt(INSTANCE_TEST_POSITION, mPresenter.getRepository().getColorListPosition());
+    }
+
+    /** INIT METHODS ___________________________________________________________________________ **/
+
+    private void initBundle() {
+        Bundle bundle = getIntent().getExtras();
+
+        // SCREEN COLOR:
+        ScreenColor color = bundle.getParcelable(ColorConstants.BUNDLE_SCREEN_COLOR);
+        if (color != null) {
+            mPresenter.setColorBackground(color, true);
+        }
+
+        // COLOR LIST:
+        List<ScreenColor> colorList = bundle.getParcelableArrayList(ColorConstants.BUNDLE_COLOR_LIST);
+        if (colorList != null) {
+            mPresenter.getRepository().setColorList(colorList);
+        }
+
+        // TEST MODE:
+        boolean testMode = bundle.getBoolean(ColorConstants.BUNDLE_TEST_MODE);
+        mPresenter.getRepository().setTestMode(testMode);
+    }
+
+    private void initSavedInstance(Bundle savedInstanceState) {
+
+        // SCREEN COLOR:
+        ScreenColor color = savedInstanceState.getParcelable(INSTANCE_COLOR);
+        if (color != null) {
+            mPresenter.setColorBackground(color, false);
+        }
+
+        // COLOR LIST:
+        List<ScreenColor> colorList = savedInstanceState.getParcelableArrayList(INSTANCE_COLOR_LIST);
+        if (colorList != null) {
+            mPresenter.getRepository().setColorList(colorList);
+        }
+
+        // TEST MODE:
+        boolean testMode = savedInstanceState.getBoolean(INSTANCE_TEST_MODE);
+        mPresenter.getRepository().setTestMode(testMode);
+
+        // TEST POSITION:
+        int testPosition = savedInstanceState.getInt(INSTANCE_TEST_POSITION);
+        mPresenter.getRepository().setColorListPosition(testPosition);
     }
 
     /** VIEW METHODS ___________________________________________________________________________ **/

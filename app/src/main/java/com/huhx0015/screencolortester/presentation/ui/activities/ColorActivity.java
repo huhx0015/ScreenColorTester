@@ -62,8 +62,9 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (mPresenter.getAllColors() != null) {
-            outState.putParcelableArrayList(INSTANCE_COLOR_LIST, new ArrayList<Parcelable>(mPresenter.getAllColors()));
+        List<ScreenColor> colorList = mPresenter.getRepository().getAllColors();
+        if (colorList != null) {
+            outState.putParcelableArrayList(INSTANCE_COLOR_LIST, new ArrayList<Parcelable>(colorList));
         }
     }
 
@@ -78,7 +79,7 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         if (savedInstanceState != null) {
             List<ScreenColor> colorList = savedInstanceState.getParcelableArrayList(INSTANCE_COLOR_LIST);
             if (colorList != null) {
-                mPresenter.setColorList(colorList);
+                mPresenter.getRepository().setColorList(colorList);
             }
         }
         mPresenter.onColorListLoaded();
@@ -98,7 +99,7 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         mColorRecyclerView.setDrawingCacheEnabled(true);
         mColorRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-        ColorListAdapter adapter = new ColorListAdapter(mPresenter.getAllColors());
+        ColorListAdapter adapter = new ColorListAdapter(mPresenter.getRepository().getAllColors());
         adapter.setHasStableIds(true);
         mColorRecyclerView.setAdapter(adapter);
     }

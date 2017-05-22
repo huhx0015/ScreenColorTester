@@ -33,7 +33,7 @@ public class ColorListAdapter extends RecyclerView.Adapter<ColorListAdapter.Colo
 
     public ColorListAdapter(List<ScreenColor> colorList) {
         mPresenter = new ColorListAdapterPresenterImpl(this);
-        mPresenter.setColorList(colorList);
+        mPresenter.getRepository().setColorList(colorList);
         mColorSize = colorList.size();
     }
 
@@ -45,14 +45,14 @@ public class ColorListAdapter extends RecyclerView.Adapter<ColorListAdapter.Colo
         return new ColorListViewHolder(view, new ColorListViewHolder.ColorListClickListener() {
             @Override
             public void onColorClicked(View view, int position) {
-                mPresenter.onColorClicked(mPresenter.getAllColors().get(position), view.getContext());
+                mPresenter.onColorClicked(mPresenter.getRepository().getAllColors().get(position), view.getContext());
             }
         });
     }
 
     @Override
     public void onBindViewHolder(ColorListViewHolder holder, int position) {
-        ScreenColor color = mPresenter.getAllColors().get(position);
+        ScreenColor color = mPresenter.getRepository().getAllColors().get(position);
         mPresenter.setColor(holder.colorView, color);
     }
 

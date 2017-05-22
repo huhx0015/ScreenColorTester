@@ -11,7 +11,6 @@ import com.huhx0015.screencolortester.presentation.presenters.ColorListAdapterPr
 import com.huhx0015.screencolortester.presentation.ui.activities.FullColorActivity;
 import com.huhx0015.screencolortester.presentation.ui.utils.ColorUtils;
 import com.huhx0015.screencolortester.presentation.ui.view.ColorListAdapterView;
-import java.util.List;
 
 /**
  * Created by Michael Yoon Huh on 5/19/2017.
@@ -53,13 +52,8 @@ public class ColorListAdapterPresenterImpl implements ColorListAdapterPresenter 
     public void onError(String message) {}
 
     @Override
-    public List<ScreenColor> getAllColors() {
-        return mRepository.getAllColors();
-    }
-
-    @Override
-    public void setColorList(List<ScreenColor> colorList) {
-        mRepository.setColorList(colorList);
+    public ColorRepository getRepository() {
+        return mRepository;
     }
 
     @Override
@@ -77,6 +71,7 @@ public class ColorListAdapterPresenterImpl implements ColorListAdapterPresenter 
 
         Intent fullColorIntent = new Intent(context, FullColorActivity.class);
         fullColorIntent.putExtra(ColorConstants.BUNDLE_SCREEN_COLOR, color);
+        fullColorIntent.putExtra(ColorConstants.BUNDLE_TEST_MODE, false);
         context.startActivity(fullColorIntent);
     }
 }
