@@ -65,6 +65,12 @@ public class ColorActivity extends AppCompatActivity implements ColorView {
         initColorList(savedInstanceState);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mColorRecyclerView.setAdapter(null);
+    }
+
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
 
     @Override

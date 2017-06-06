@@ -10,6 +10,8 @@ public interface FullColorInteractor {
 
     void stop();
 
+    boolean isTestRunning();
+
     int getTestPosition();
 
     void setTestPosition(int position);

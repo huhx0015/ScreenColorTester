@@ -1,5 +1,5 @@
 Screen Color Tester
-=============================
+===================
 
 DEVELOPER: huhx0015
 

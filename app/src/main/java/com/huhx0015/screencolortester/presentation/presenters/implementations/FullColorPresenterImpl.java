@@ -38,14 +38,14 @@ public class FullColorPresenterImpl implements FullColorPresenter, FullColorInte
 
     @Override
     public void resume() {
-        if (mRepository.getTestMode()) {
+        if (mRepository.getTestMode() && !mInteractor.isTestRunning()) {
             mInteractor.start();
         }
     }
 
     @Override
     public void pause() {
-        if (mRepository.getTestMode()) {
+        if (mRepository.getTestMode() && mInteractor.isTestRunning()) {
             mRepository.setTestPosition(mInteractor.getTestPosition());
             mInteractor.stop();
         }

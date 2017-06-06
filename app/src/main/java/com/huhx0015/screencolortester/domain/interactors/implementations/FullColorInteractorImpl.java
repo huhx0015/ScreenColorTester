@@ -24,6 +24,7 @@ public class FullColorInteractorImpl implements FullColorInteractor {
 
     // THREAD VARIABLES:
     private Handler mHandler;
+    private boolean mIsTestRunning = false;
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
@@ -41,6 +42,7 @@ public class FullColorInteractorImpl implements FullColorInteractor {
 
         // Thread constantly loops for every THREAD_TIME_PER_SECOND until the thread is stopped.
         if (mTestPosition < TOTAL_NUMBER_OF_TESTS) {
+            mIsTestRunning = true;
             mHandler.postDelayed(mThread, ColorConstants.THREAD_TIME_PER_SCREEN);
             Timber.d("FullColorInteractorImpl.start(): Thread started.");
         }
@@ -48,8 +50,14 @@ public class FullColorInteractorImpl implements FullColorInteractor {
 
     @Override
     public void stop() {
+        mIsTestRunning = false;
         mHandler.removeCallbacks(mThread);
         Timber.d("FullColorInteractorImpl.stop(): Thread stopped.");
+    }
+
+    @Override
+    public boolean isTestRunning() {
+        return mIsTestRunning;
     }
 
     @Override

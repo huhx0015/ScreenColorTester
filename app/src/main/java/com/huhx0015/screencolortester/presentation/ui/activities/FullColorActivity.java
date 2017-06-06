@@ -68,6 +68,18 @@ public class FullColorActivity extends AppCompatActivity implements FullColorVie
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.resume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPresenter.pause();
+    }
+
     /** ACTIVITY EXTENSION METHODS _____________________________________________________________ **/
 
     @Override
